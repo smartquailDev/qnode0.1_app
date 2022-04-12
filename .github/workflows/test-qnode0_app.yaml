@@ -23,7 +23,6 @@ jobs:
     
     services:
       smartquaildb:
-        postgres_main:
           image:  postgres:13-alpine
           env: 
             POSTGRES_DB: ${{ env.NAME_DB }}
