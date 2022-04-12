@@ -1,8 +1,8 @@
 version: '3.9'
 
 services:
-  qnode0_app:
-    image: smartquail/qnode0_app:0.2Dev
+  qnode01_app:
+    image: smartquail/qnode0.1_app:0.1Dev
     environment:
       - PORT=8020
     env_file:
@@ -12,7 +12,7 @@ services:
     ports:
       - "8001:8020"
     volumes:
-      - staticfiles:/qnode0_app/staticfiles
+      - static-data-qnode01:/vol/web
    # command: sh -c "chmod +x /scripts/migrations.sh && sh /scripts/migrations.sh && sh /scripts/run.sh"
 
   smartquaildb:
@@ -28,6 +28,16 @@ services:
     volumes:
       - smartquaildb_data:/var/lib/postgresql/data/
 
+  qnode01_proxy:
+    image: nginx:stable-alpine
+    restart: always
+    depends_on: 
+      - qnode01_app
+    ports:
+      - "80:8000"
+    volumes: 
+      - static-data-qnode01:/vol/static
+
   redis:
     image: redis:3.0
     restart: always
@@ -42,4 +52,4 @@ services:
 volumes:
   smartquaildb_data:
   redis_data:
-  staticfiles:
+  static-data-qnode01:
