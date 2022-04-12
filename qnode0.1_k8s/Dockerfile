@@ -10,12 +10,13 @@ RUN git clone https://github.com/smartquailDev/qnode0.1_app.git
 
 #COPY . /qnode0_app
 #COPY ./qnode0_app.dev/qnode0_app_env_dev/qnode0_app/ /qnode0_app
+COPY ./requirements.txt /requirements.txt
 COPY ./scripts /scripts
-COPY ./.env /qnode0_app/.env 
+COPY ./.env /qnode0.1_app/qnode01_app/.env 
 #No olvidar sacar las variables de entorno.
 
 
-WORKDIR /qnode01_app/
+WORKDIR /qnode0.1_app/qnode01_app/
 EXPOSE 8000 443 
 EXPOSE 25
 
@@ -32,15 +33,15 @@ RUN python -m venv /py && \
     apk add openssl-dev && \
     #/py/bin/pip install  rust  &&  \
     #/py/bin/pip install   py3-kiwisolver &&  \
-    /py/bin/pip install -r requirements.txt && \
+    /py/bin/pip install -r /requirements.txt && \
     apk del openssl-dev  &&  \
     apk add libressl-dev  && \
     apk del .tmp-deps && \
-    adduser --disabled-password --no-create-home qnode0 && \
+    adduser --disabled-password --no-create-home qnode01 && \
     mkdir -p /vol/web/static && \
     mkdir -p /vol/web/media && \
     chown -R qnode01:qnode01 /vol && \
-    chmod -R 755 /qnode01_app/ && \
+    chmod -R 755 /qnode0.1_app/qnode01_app/ && \
     chmod -R 755 /vol  && \
     chmod -R 755 /scripts  && \
     chmod -R +x /scripts
