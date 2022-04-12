@@ -1,15 +1,11 @@
-name: Django CI
+name: SmartQuail Django-app & Postgress Test
 
 on:
   workflow_call:
   workflow_dispatch:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
+ 
 jobs:
-  build:
+  qnode01_test:
     runs-on: ubuntu-latest
     defaults:
       run:
