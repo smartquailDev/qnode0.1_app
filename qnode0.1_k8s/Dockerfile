@@ -15,7 +15,7 @@ COPY ./.env /qnode0_app/.env
 #No olvidar sacar las variables de entorno.
 
 
-WORKDIR /qnode0.1_app/qnode01_app
+WORKDIR /qnode01_app/
 EXPOSE 8000 443 
 EXPOSE 25
 
