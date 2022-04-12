@@ -20,14 +20,7 @@ jobs:
       PASSWORD_DB: smartquailadmindb
       USER_DB: smartquailadmin
       HOST_DB: smartquaildd
-    ports:
-      - 5432:5432
-    options: >-
-      --health-cmd pg_isready
-      --health-interval 10s
-      --health-timeout 5s
-      --health-retries 5
-
+    
     services:
       smartquaildb:
         postgres_main:
@@ -38,6 +31,13 @@ jobs:
             POSTGRES_USER: ${{ env.USER_DB }}
             POSTGRES_HOST: ${{ env.HOST_DB}}
             POSTGRES_PORT: ${{ env.PORT_DB}}
+          ports:
+            - 5432:5432
+          options: >-
+            --health-cmd pg_isready
+            --health-interval 10s
+            --health-timeout 5s
+            --health-retries 5
     strategy:
       max-parallel: 4
       matrix:
