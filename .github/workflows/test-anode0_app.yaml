@@ -14,6 +14,8 @@ jobs:
     defaults:
       run:
         working-directory: ./qnode01_app
+    env:
+      DJANGO_SECRET_KEY: test-key-not-good
     strategy:
       max-parallel: 4
       matrix:
