@@ -24,7 +24,7 @@ jobs:
       with:
         token: ${{ secrets.DO_API_TOKEN_KEY }}
     - name: Login to Do Container Registry with short-lived creds
-      run: dotctl registry login --expiry-seconds 1200
+      run: doctl registry login --expiry-seconds 1200
     - name: Build container image
       working-directory: ./qnode0.1_k8s
       run: | 
@@ -36,7 +36,7 @@ jobs:
         docker push registry.digitalocean.com/smartquail/qnode01_app --all-tags
     - name: k8s cluster kubeconfig file with /short-lived creds
       run: |
-        dotctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{env.CLUSTER_NAME}}
+        doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{env.CLUSTER_NAME}}
    
     - name: Update Deployment secrets
       run: |
