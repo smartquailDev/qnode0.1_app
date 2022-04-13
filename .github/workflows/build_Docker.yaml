@@ -32,7 +32,7 @@ jobs:
         context: ./qnode01_k8s
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/qnode01_app:${GITHUB_SHA::7}-${GITHUB_RUN_ID::5}
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/qnode01_app:latest
    
 
        
