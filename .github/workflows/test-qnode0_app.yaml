@@ -16,6 +16,8 @@ jobs:
       PASSWORD_DB: smartquailadmindb
       USER_DB: smartquailadmin
       HOST_DB: smartquaildd
+      PORT_DB: 5432
+      DB_IGNORE_SSL: "true"
     
     services:
       smartquaildb:

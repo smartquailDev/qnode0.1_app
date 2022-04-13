@@ -30,7 +30,7 @@ jobs:
       run: | 
         docker build -f Dockerfile \ 
            -t registry.digitalocean.com/smartquail/qnode01_app:latest \
-           -t registry.digitalocean.com/smartquail/anode01_app:${GITHUB_SHA:: 7} \ .
+           -t registry.digitalocean.com/smartquail/anode01_app:${GITHUB_SHA:: 7}-${GITHUB_RUN_ID:: 5} \ .
     - name: Push Image
       run: | 
         docker push registry.digitalocean.com/smartquail/qnode01_app --all-tags
@@ -59,7 +59,7 @@ jobs:
 
     - name: Update Deployment image
       run: |
-        kubectl set image deployment/qnode01_app-deployment qnode01-k8s=registry.digitalocean.com/smartquails/qnode01_app:${GITHUB_SHA::7}
+        kubectl set image deployment/qnode01_app-deployment qnode01-k8s=registry.digitalocean.com/smartquails/qnode01_app:${GITHUB_SHA::7}-${GITHUB_RUN_ID:: 5}
     - name: Wait for rollout to finish
       run: | 
         kubectl rollout status deployment/qnode01_app-deployment
@@ -67,6 +67,7 @@ jobs:
       run: | 
         export SINGLE_POD_NAME=$(kubectl get pod -l app=qnode01_app-deployment -o jsonpath="{.items[0].metadata.name}")
         kubectl exec -it $SINGLE_POD_NAME -- sh /scripts/migrations.sh
+        kubectl exec -it $SINGLE_POD_NAME -- sh /scripts/collectstatic.sh
 
        
 
