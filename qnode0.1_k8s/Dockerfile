@@ -12,7 +12,7 @@ RUN git clone https://github.com/smartquailDev/qnode0.1_app.git
 #COPY ./qnode0_app.dev/qnode0_app_env_dev/qnode0_app/ /qnode0_app
 COPY ./requirements.txt /requirements.txt
 COPY ./scripts /scripts
-COPY ./.env /qnode0.1_app/qnode01_app/.env 
+#COPY ./.env /qnode0.1_app/qnode01_app/.env 
 #No olvidar sacar las variables de entorno.
 
 
