@@ -28,9 +28,10 @@ jobs:
     - name: Build container image
       working-directory: ./qnode0.1_k8s
       run: | 
-        docker build -f Dockerfile \ 
-           -t registry.digitalocean.com/smartquail/qnode01_app:latest \
-           -t registry.digitalocean.com/smartquail/anode01_app:${GITHUB_SHA:: 7}-${GITHUB_RUN_ID:: 5} \ .
+        docker build -f Dockerfile \
+            -t registry.digitalocean.com/smartquail/qnode01_app:latest \
+            -t registry.digitalocean.com/smartquail/qnode01_app:${GITHUB_SHA::7}-${GITHUB_RUN_ID::5} \
+            .
     - name: Push Image
       run: | 
         docker push registry.digitalocean.com/smartquail/qnode01_app --all-tags
