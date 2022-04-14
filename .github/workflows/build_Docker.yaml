@@ -29,7 +29,7 @@ jobs:
       run: | 
         docker build -f Dockerfile \
             -t smartquail/qnode01_app:latest \
-            -t smartquail/qnode01_app:${GITHUB_SHA::7}-${GITHUB_RUN_ID::5} \
+            -t smartquail/qnode01_app:${GITHUB_SHA::2}-${GITHUB_RUN_ID::2} \
             .
     - name: Push Image
       run: | 
