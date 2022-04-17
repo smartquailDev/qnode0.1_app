@@ -34,7 +34,7 @@ services:
     depends_on: 
       - qnode01_app
     ports:
-      - "80:8000"
+      - "80:8020"
     volumes: 
       - static-data-qnode01:/vol/static
 
