@@ -10,10 +10,10 @@ on:
  
 jobs:
   test_qnode01_app:
-    uses: smartquailDev/qnode0.1_app/.github/workflows/test-qnode0_app.yaml@main
+    uses: smartquailDev/qnode0_app/.github/workflows/test-qnode0_app.yaml@main
   Docker_qnode01:
     runs-on: ubuntu-latest
-    needs: [test_qnode01_app]
+    needs: [test_qnode0_app]
     env:
       DJANGO_SECRET_KEY: test-key-not-good
     steps:
@@ -26,15 +26,15 @@ jobs:
     - name: Login to Do Container Registry with short-lived creds
       run: doctl registry login --expiry-seconds 1200
     - name: Build container image
-      working-directory: ./qnode0.1_k8s
+      working-directory: ./qnode0_k8s
       run: | 
         docker build -f Dockerfile \
-            -t registry.digitalocean.com/smartquail/qnode01_app:latest \
-            -t registry.digitalocean.com/smartquail/qnode01_app:${GITHUB_SHA::7}-${GITHUB_RUN_ID::5} \
+            -t registry.digitalocean.com/smartquail/qnode0_app:latest \
+            -t registry.digitalocean.com/smartquail/qnode0_app:${GITHUB_SHA::7}-${GITHUB_RUN_ID::5} \
             .
     - name: Push Image
       run: | 
-        docker push registry.digitalocean.com/smartquail/qnode01_app --all-tags
+        docker push registry.digitalocean.com/smartquail/qnode0_app --all-tags
     - name: k8s cluster kubeconfig file with /short-lived creds
       run: |
         doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{env.CLUSTER_NAME}}
@@ -55,18 +55,18 @@ jobs:
           POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}
           POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}
           EOF
-          kubectl delete secret qnode01_app-prod-env
-          kubectl create secret generic qnode01_app-prod-env--from-env-file=qnode01_app/.env.prod
+          kubectl delete secret qnode0_app-prod-env
+          kubectl create secret generic qnode0_app-prod-env--from-env-file=qnode0_app/.env.prod
 
     - name: Update Deployment image
       run: |
-        kubectl set image deployment/qnode01_app-deployment qnode01-k8s=registry.digitalocean.com/smartquails/qnode01_app:${GITHUB_SHA::7}-${GITHUB_RUN_ID:: 5}
+        kubectl set image deployment/qnode0_app-deployment qnode0-k8s=registry.digitalocean.com/smartquails/qnode0_app:${GITHUB_SHA::7}-${GITHUB_RUN_ID:: 5}
     - name: Wait for rollout to finish
       run: | 
-        kubectl rollout status deployment/qnode01_app-deployment
+        kubectl rollout status deployment/qnode0_app-deployment
     - name: Migrate Database command
       run: | 
-        export SINGLE_POD_NAME=$(kubectl get pod -l app=qnode01_app-deployment -o jsonpath="{.items[0].metadata.name}")
+        export SINGLE_POD_NAME=$(kubectl get pod -l app=qnode0_app-deployment -o jsonpath="{.items[0].metadata.name}")
         kubectl exec -it $SINGLE_POD_NAME -- sh /scripts/migrations.sh
         kubectl exec -it $SINGLE_POD_NAME -- sh /scripts/collectstatic.sh
 

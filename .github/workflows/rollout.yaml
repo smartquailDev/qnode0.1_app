@@ -21,7 +21,7 @@ jobs:
         dotctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{env.CLUSTER_NAME}}
     - name: Run rollout on Deployment
       run: | 
-        kubectl rollout restart deployment/qnode01_app-deployment
+        kubectl rollout restart deployment/qnode0_app-deployment
 
        
 
