@@ -18,8 +18,10 @@ django-storages
 django-social-auth
 social-auth-app-django
 sorl-thumbnail
+django-widget-tweaks
 
 
 boto3
 #System HOST
 PyOpenSSL
+python-dotenv
