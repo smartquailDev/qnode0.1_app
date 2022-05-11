@@ -1,5 +1,6 @@
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
+{% load social_share %}
 {% load static %}
 
 
@@ -44,14 +45,12 @@
                     <a href="{% url 'wagtailadmin_home' %}">Customers</a>
                 </li>
                 <li>
-                    <a href="{% slugurl 'about' %}">About me</a>
-                </li>
-                <li>
                     <a href="{% slugurl 'shootingnow' %}">Shooting now</a>
                 </li>
                 <li>
-                    <a href="{% slugurl 'contact' %}">Contact to me</a>
+                    <a href="{% slugurl 'about' %}">About me</a>
                 </li>
+                
             </ul>
         </nav>
     </div>

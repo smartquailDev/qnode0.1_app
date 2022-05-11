@@ -9,6 +9,7 @@
 
 
 {% block content %}
+{% include 'webapp_0/header_about.html' %}
             <!-- wrapper  -->	
             <div id="wrapper">
                 <!-- content -->	
@@ -16,7 +17,7 @@
                     <!-- column-image  -->	
                     <div class="column-image">
                         {% for item in page.galleria_7.all %}
-                        {% image item.image scale-100 as A1 %
+                        {% image item.image scale-100 as A1 %}
                         <div class="bg"  data-bg="{{A1.url}}"></div>
                         {% endfor %}
                         <div class="overlay"></div>
@@ -62,7 +63,7 @@
                                             <div class="inline-facts">
                                                 <div class="milestone-counter">
                                                     <div class="stats animaper">
-                                                        <div class="num" data-content="461" data-num="461">{{page.finish_projects}}</div>
+                                                        <div class="num" data-content="461" data-num="{{page.finish_projects}}">{{page.finish_projects}}</div>
                                                     </div>
                                                 </div>
                                                 <h6>Finished projects</h6>
@@ -72,7 +73,7 @@
                                             <div class="inline-facts">
                                                 <div class="milestone-counter">
                                                     <div class="stats animaper">
-                                                        <div class="num" data-content="461" data-num="461">{{page.countrys_projects }}</div>
+                                                        <div class="num" data-content="461" data-num="{{page.countrys_projects }}">{{page.countrys_projects }}</div>
                                                     </div>
                                                 </div>
                                                 <h6>Countrys</h6>
@@ -82,7 +83,7 @@
                                             <div class="inline-facts">
                                                 <div class="milestone-counter">
                                                     <div class="stats animaper">
-                                                        <div class="num" data-content="168" data-num="168">{{page.agencies_projects }}</div>
+                                                        <div class="num" data-content="168" data-num="{{page.agencies_projects}}">{{page.agencies_projects}}</div>
                                                     </div>
                                                 </div>
                                                 <h6>Agencies</h6>
@@ -92,7 +93,7 @@
                                             <div class="inline-facts">
                                                 <div class="milestone-counter">
                                                     <div class="stats animaper">
-                                                        <div class="num" data-content="222" data-num="222">{{page.hours_projects }}</div>
+                                                        <div class="num" data-content="222" data-num="{{page.hours_projects }}">{{page.hours_projects }}</div>
                                                     </div>
                                                 </div>
                                                 <h6>Working hours </h6>
@@ -119,25 +120,25 @@
                                             <!-- skill 1-->
                                             <div class="custom-skillbar-title"><span>{{page.skilis1}}</span></div>
                                             <div class="skill-bar-percent">{{page.pskilis1}}%</div>
-                                            <div class="skillbar-bg" data-percent="95%">
+                                            <div class="skillbar-bg" data-percent="{{page.pskilis1}}%">
                                                 <div class="custom-skillbar"></div>
                                             </div>
                                             <!-- skill 2-->
                                             <div class="custom-skillbar-title"><span>{{page.skilis2}}</span></div>
                                             <div class="skill-bar-percent">{{page.pskilis2}}%</div>
-                                            <div class="skillbar-bg" data-percent="65%">
+                                            <div class="skillbar-bg" data-percent="{{page.pskilis2}}%">
                                                 <div class="custom-skillbar"></div>
                                             </div>
                                             <!-- skill 3-->
                                             <div class="custom-skillbar-title"><span>{{page.skilis3}}</span></div>
                                             <div class="skill-bar-percent">{{page.pskilis3}}%</div>
-                                            <div class="skillbar-bg" data-percent="75%">
+                                            <div class="skillbar-bg" data-percent="{{page.pskilis3}}%">
                                                 <div class="custom-skillbar"></div>
                                             </div>
                                             <!-- skill 4-->
                                             <div class="custom-skillbar-title"><span>{{page.skilis4}}</span></div>
-                                            <div class="skill-bar-percent">{{page.pskilis1}}%</div>
-                                            <div class="skillbar-bg" data-percent="90%">
+                                            <div class="skill-bar-percent">{{page.pskilis4}}%</div>
+                                            <div class="skillbar-bg" data-percent="{{page.pskilis4}}%">
                                                 <div class="custom-skillbar"></div>
                                             </div>
                                         </div>

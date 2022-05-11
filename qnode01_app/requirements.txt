@@ -19,6 +19,7 @@ django-social-auth
 social-auth-app-django
 sorl-thumbnail
 django-widget-tweaks
+django-social-share
 
 
 boto3
