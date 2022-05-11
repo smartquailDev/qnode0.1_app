@@ -1,166 +1,246 @@
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
-{% load widget_tweaks %}
-{% load static %}
-<!DOCTYPE HTML>
+{% load static  %}
+{% extends "webapp_0/base.html" %}
 
-<html>
-	<head>
-		<title>{{ page.title }}</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{% static 'css/gallery.css' %}" />
-		<noscript><link rel="stylesheet" href="{% static 'css/noscript.css' %}" /></noscript>
-	</head>
-	<body class="is-preload">
+{% block content %}
+            <!-- header end -->
+            <!-- wrapper  -->	
+            <div id="wrapper">
+                <!-- content -->	
+                <div class="content">
+                    <!-- column-image  -->	
+                    <div class="column-image">
+                        <div class="bg"  data-bg="{% static 'images/bg/1.jpg' %}"></div>
+                        <div class="overlay"></div>
+                        <div class="column-title">
+                            <h2>Shootin Now</h2>
+                        </div>
+                        <div class="column-notifer">
+                            <div class="scroll-down-wrap transparent_sdw">
+                                <div class="mousey">
+                                    <div class="scroller"></div>
+                                </div>
+                                <span>Scroll down  to Discover</span>
+                            </div>
+                        </div>
+                        <div class="fixed-column-dec"></div>
+                    </div>
+                    <!-- column-image end  -->	
+                    <!-- column-wrapper -->	
+                    <div class="column-wrapper single-content-section">
+                        <!--fixed-bottom-content -->	
+                        <div class="fixed-bottom-content">
+                            <!-- pagination   -->
+                            <div class="content-nav-fixed">
+                                <ul>
+                                    <li>
+                                        <a href="blog-single.html" class="ln"><i class="fal fa-long-arrow-left"></i><span>Prev <strong></strong></span></a>
+                                        <div class="content-nav_mediatooltip cnmd_leftside"><img  src="images/folio/1.jpg"   alt=""></div>
+                                    </li>
+                                    <li>
+                                        <a href="blog-single.html" class="rn"><span >Next <strong></strong></span> <i class="fal fa-long-arrow-right"></i></a>
+                                        <div class="content-nav_mediatooltip cnmd_rightside"><img  src="images/folio/1.jpg"   alt=""></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--fixed-bottom-content end  -->	
+                        <!--section  -->	
+                         <section class="single-content-section">
+                            <div class="container small-container">
+                                <!-- post -->
+                                {% for post in posts %}	
+                                <div class="post fl-wrap fw-post single-post ">
+                                    <h2><span>{{ post.custom_title }}</span></h2>
+                                    <ul class="blog-title-opt">
+                                        <li>{{ post.Fecha|date:"d M,Y" }}</li>
+                                        <li> - </li>
+                                        <li><a href="{% slugurl 'about' %}">{{post.author}}</a></li>
+                                        <li>{{post.agency}}</li>
+                                        <li> - </li>
+                                        <li><a href="#"><span class="author_avatar"> <img alt='' src="{% static 'images/avatar/1.jpg' %}" width="50" height="50"></span>Juan Silva</a></li>
+                                    </ul>
+                                    <!-- blog media -->
+                                    <div class="blog-media fl-wrap">
+                                        <div class="single-slider-wrap">
+                                            <div class="single-slider fl-wrap">
+                                                <div class="swiper-container">
+                                                    <div class="swiper-wrapper lightgallery">
+                                                        {% image post.image fill-250x250 as new_image2 %}
+                                                        <div class="swiper-slide hov_zoom"><img src="{{new_image2.url}}" alt=""><a href="{{new_image2.url}}" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
+                                                        {% image post.image_2 fill-250x250 as new_image3 %}
+                                                        <div class="swiper-slide hov_zoom"><img src="{{new_image3.url}}" alt=""><a href="{{new_image3.url}}" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
+                                                        {% image post.image_3 fill-250x250 as new_image4 %}
+                                                        <div class="swiper-slide hov_zoom"><img src="{{new_image4.url}}" alt=""><a href="{{new_image4.url}}"class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ss-slider-pagination_wrap">
+                                                <div class="ss-slider-pagination"></div>
+                                            </div>
+                                            <div class="ss-slider-cont ss-slider-cont-prev color-bg"><i class="fal fa-long-arrow-left"></i></div>
+                                            <div class="ss-slider-cont ss-slider-cont-next color-bg"><i class="fal fa-long-arrow-right"></i></div>
+                                        </div>
+                                    </div>
+                                    <!-- blog media end -->
+                                    <div class="blog-text fl-wrap">
+                                        <div class="pr-tags fl-wrap">
+                                            <span>Tags : </span>
+                                            <ul>
+                                                {% if post.tag == advertising %}
+                                                <li><a href="{% slugurl 'advertising' %}">Advertinsing</a></li>
+                                                {% else %}
+                                                <li></li>
+                                                {% endif %}
+                                                {% if post.tag == documentary %}
+                                                <li><a href="{% slugurl 'documentary' %}">Documentary</a></li>
+                                                {% else %}
+                                                <li></li>
+                                                {% endif %}
+                                                {% if post.tag == landscape %}
+                                                <li><a href="{% slugurl 'landscape' %}">Landscape</a></li>
+                                                {% else %}
+                                                <li></li>
+                                                {% endif %}
+                                                {% if post.tag == product %}
+                                                <li><a href="{% slugurl 'product' %}">Product</a></li>
+                                                {% else %}
+                                                <li></li>
+                                                {% endif %}
+                                                {% if post.tag == tearsheeting %}
+                                                <li><a href="{% slugurl 'tearsheeting' %}">Teearsheeting</a></li>
+                                                {% else %}
+                                                <li></li>
+                                                {% endif %}
+                                            </ul>
+                                        </div>
+                                        {{ post.content }}
+                                        <blockquote>
+                                            <p>  {{ post.quote }}   </p>
+                                        </blockquote>
+                                       
+                                    </div>
+                                    <!-- post-author-->                                   
+                                    <div class="post-author fl-wrap">
+                                        <div class="author-img">
+                                            <img alt='' src="{% static 'images/avatar/1.jpg' %}">	
+                                        </div>
+                                        <div class="author-content">
+                                            <h5><a href="{% slugurl 'about' %}">Juan Silva Photo</a></h5>
+                                            <p>{{post.comments}}</p>
+                                            <div class="author-social">
+                                                <ul>
+                                                    {% if settings.webapp_0.SocialMediaSettings.facebook %}
+                                                    <li><a href="{{ settings.webapp_0.SocialMediaSettings.facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                                    {% endif %}
+                                                    {% if settings.webapp_0.SocialMediaSettings.instagram %}
+                                                    <li><a href="{{ settings.webapp_0.SocialMediaSettings.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                                    {% endif %}
+                                                    {% if settings.webapp_0.SocialMediaSettings.twitter %}
+                                                    <li><a href="{{ settings.webapp_0.SocialMediaSettings.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                                    {% endif %}
+                                                    <li><a href="https://api.whatsapp.com/send?phone=593984534954" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                                    <li><a href="mailto:info@juansilvaphoto.com" target="_blank"><i class="fab fa-envelope"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--post-author end-->
+                                    <div id="comments" class="single-post-comm fl-wrap">
+                                        <!--title-->
+                                        <h6 id="comments-title">Comments<span>( 2 )</span></h6>
+                                        <ul class="commentlist clearafix">
+                                            <li class="comment">
+                                                <div class="comment-body">
+                                                    <div class="comment-author">
+                                                        <img alt='' src="{% static 'images/avatar/1.jpg' %}" width="50" height="50">
+                                                    </div>
+                                                    <table>
+                                                        {% for question, answers in results.items %}
+                                                        <tr>
+                                                          <th>{{  question  }}</th>
+                                                          
+                                                        </tr>
+                                                        <tr>
+                                                            {% for answer, count in answers.items %}
+                                                          <td>{{ answer }}: {{ count }}  <i class="fa-solid fa-thumbs-up"></i></td>			
+                                                          {% endfor %}
+                                                        </tr>
+                                                        {% endfor %}
+                                                      </table>
+                                                    <cite class="fn"><a href="#">Kevin</a></cite>
+                                                    <div class="comment-meta">
+                                                        <h6><a href="#">January 02, 2014 at 07:39 am</a> / <a class='comment-reply-link' href="#">Reply</a></h6>
+                                                    </div>
+                                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo.</p>
+                                                </div>
+                                            </li>
+                                           
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                        <div id="respond" class="clearafix">
+                                            <h6 id="reply-title">Leave A Review</h6>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
-
-				<!-- Header -->
-					<header id="header">
-					{% for item in page.galleria_News.all %}
-                    {% image item.logo scale-65 as logo %}
-						<h1><a href="{% slugurl 'index' %}"><strong><img src="{{ logo.url }}" alt="" /></strong></a></h1>
-					{% endfor %}
-						<nav>
-							<ul>
-								<li><a href="#footer" class="icon fa-info-circle">{{ self.custom_title }} Info</a></li>
-							</ul>
-						</nav>
-					</header>
-
-			
-
-					<div id="main">
-					{% for item in page.galleria_News.all %}
-            {% image item.image scale-100 as F1 %}
-			{% image item.image_2 scale-100 as F2 %}
-			{% image item.image_3 scale-100 as F3 %}
-			{% image item.image_4 scale-100 as F4 %}
-			{% image item.image_5 scale-100 as F5 %}
-			{% image item.image_6 scale-100 as F6 %}
-			{% image item.image_7 scale-100 as F7 %}
-			{% image item.image_8 scale-100 as F8 %}
-			{% image item.image_9 scale-100 as F9 %}
-			{% image item.image_10 scale-100 as F10 %}
-			
-						<article class="thumb">
-							<a href="{{ F1.url }}" class="image"><img src="{{ F1.url }}" alt="" /></a>
-							<h2>{{page.Ad_info1}}</h2>
-							<p><a href="www.google.com">{{page.Ad_date1}}</a></p>
-						</article>
-						<article class="thumb">
-							<a href="{{ F2.url }}" class="image"><img src="{{ F2.url }}" alt="" /></a>
-							<h2>{{page.Ad_info2}}</h2>
-							<p>{{page.Ad_date2}}</p>
-						</article>
-						<article class="thumb">
-							<a href="{{ F3.url }}" class="image"><img src="{{ F3.url }}" alt="" /></a>
-							<h2>{{page.Ad_info3}}</h2>
-							<p>{{page.Ad_date3}}</p>
-						</article>
-						<article class="thumb">
-							<a href="{{ F4.url }}" class="image"><img src="{{ F4.url }}" alt="" /></a>
-							<h2>{{page.Ad_info4}}</h2>
-							<p>{{page.Ad_date4}}</p>
-						</article>
-						<article class="thumb">
-							<a href="{{ F5.url }}" class="image"><img src="{{ F5.url }}" alt="" /></a>
-							<h2>{{page.Ad_info5}}</h2>
-							<p>{{page.Ad_date5}}</p>
-						</article>
-						<article class="thumb">
-							<a href="{{ F6.url }}" class="image"><img src="{{ F6.url }}" alt="" /></a>
-							<h2>{{page.Ad_info6}}</h2>
-							<p>{{page.Ad_date6}}</p>
-						</article>
-						<article class="thumb">
-							<a href="{{ F7.url }}" class="image"><img src="{{ F7.url }}" alt="" /></a>
-							<h2>{{page.Ad_info7}}</h2>
-							<p>{{page.Ad_date7}}</p>
-						</article>
-						<article class="thumb">
-							<a href="{{ F8.url }}" class="image"><img src="{{ F8.url }}" alt="" /></a>
-							<h2>{{page.Ad_info8}}</h2>
-							<p>{{page.Ad_date8}}</p>
-						</article>
-						<article class="thumb">
-							<a href="{{ F9.url }}" class="image"><img src="{{ F9.url }}" alt="" /></a>
-							<h2>{{page.Ad_info9}}</h2>
-							<p>{{page.Ad_date9}}</p>
-						</article>
-						<article class="thumb">
-							<a href="{{ F10.url }}" class="image"><img src="{{ F10.url }}" alt="" /></a>
-							<h2>{{page.Ad_info10}}</h2>
-							<p>{{page.Ad_date10}}</p>
-						</article>
-						
-			{% endfor %}
-					</div>
-			<footer id="footer" class="panel">
-						<div class="inner split">
-							<div>
-								<section>
-									<h2>Shooting Now!</h2>
-									<p>{{page.Ad_info}}</p>
-								</section>
-								<section>
-									<h2>{{page.Ad_link|richtext}}</h2>
-									<ul class="icons">
-									<li>
-									{% if settings.webapp_0.SocialMediaSettings.facebook %}
-									<a href="{{ settings.webapp_0.SocialMediaSettings.facebook }}">
-									<i class="icon fa-facebook"></i>
-									</a>
-							        {% endif %}
-									</li>
-									<li>
-									{% if settings.webapp_0.SocialMediaSettings.instagram %}
-									<a href="{{ settings.webapp_0.SocialMediaSettings.instagram }}">
-									<i class="icon fa-instagram"></i>
-									</a>
-									</li>
-									<li>
-							        {% endif %}
-									{% if settings.webapp_0.SocialMediaSettings.twitter %}
-									<a href="{{ settings.webapp_0.SocialMediaSettings.twitter }}">
-									<i class="icon fa-twitter"></i>
-									</a>
-							        {% endif %}
-									</li>
-									</ul>
-								</section>
-								<p class="copyright">
-									&copy; Powered by: <a href="#">SmartQuail,Inc</a>.
-								</p>
-							</div>
-							<div>
-								<section>
-								{% image self.news_image width-380 as banner %}
-								<img src="{{ banner.url }}" alt="{{ banner.url }}">
-									<h1>{{ self.custom_title }}</h1>
-                                    {% for block in self.content %}
-<p>{% include_block block %}</p>
-{% endfor %}
-				    
-								</section>
-							</div>
-						</div>
-					</footer>
-
-				<!-- Footer -->
-					
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="{% static 'js/jquery.min.js' %}"></script>
-			<script src="{% static 'js/jquery.poptrox.min.js' %}"></script>
-			<script src="{% static 'js/browser.min.js' %}"></script>
-			<script src="{% static 'js/breakpoints.min.js' %}"></script>
-			<script src="{% static 'js/util.js' %}"></script>
-			<script src="{% static 'js/main2.js' %}"></script>
-
-	</body>
-</html>
+                                            <form action="{% pageurl page %}" method="POST" novalidate class="custom-form "   name="commentform">
+                                                <fieldset>
+                                                {% csrf_token %}
+                                                {% for hidden_field in form.hidden_fields %}
+                                                  {{ hidden_field }}
+                                                {% endfor %}
+                                              
+                                                {% if form.non_field_errors %}
+                                                  <div class="alert alert-danger" role="alert">
+                                                    {% for error in form.non_field_errors %}
+                                                      {{ error }}
+                                                    {% endfor %}
+                                                  </div>
+                                                {% endif %}
+                                              
+                                                {% for field in form.visible_fields %}
+                                                  <div class="form-group">
+                                                    {{ field.label_tag }}
+                                              
+                                                    {% if form.is_bound %}
+                                                      {% if field.errors %}
+                                                        {% render_field field class="form-control is-invalid" %}
+                                                        {% for error in field.errors %}
+                                                          <div class="invalid-feedback">
+                                                            {{ error }}
+                                                          </div>
+                                                        {% endfor %}
+                                                      {% else %}
+                                                        {% render_field field class="form-control is-valid" %}
+                                                      {% endif %}
+                                                    {% else %}
+                                                      {% render_field field class="form-control" %}
+                                                    {% endif %}
+                                              
+                                                    {% if field.help_text %}
+                                                      <small class="form-text text-muted">{{ field.help_text }}</small>
+                                                    {% endif %}
+                                                  </div>
+                                                {% endfor %}          
+                                                <button class="btn float-btn" id="submit">Add Comment </button>
+                                            </fieldset>
+                                              </form>
+                                        </div>
+                                        <!--end respond-->
+                                    </div>
+                                    <!--comments end -->
+                                </div>
+                                <!-- post end-->
+                                {% endfor %}
+                            </div>
+                        </section>
+                        <!--section end  -->	
+                        <!--footer -->			
+                        {% include 'webapp_0/footer.html' %}
+                        <!--footer end  -->	
+                    </div>
+                    <!-- column-wrapper -->	
+                </div>
+                <!--content end-->	
+                <!--share-wrapper-->
+                {% endblock %}
+               
