@@ -1,4 +1,4 @@
-name: SmartQuail Django-app & Postgress Test
+name: SmartQuail Django-app & Postgress Test QNODE01
 
 on:
   workflow_call:
@@ -12,7 +12,7 @@ jobs:
         working-directory: ./qnode01_app
     env:
       DJANGO_SECRET_KEY: test-key-not-good
-      NAME_DB: node0db
+      NAME_DB: QNODE01_DEV_DB
       PASSWORD_DB: smartquailadmindb
       USER_DB: smartquailadmin
       HOST_DB: smartquaildd
