@@ -1,18 +1,18 @@
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 {% load static %}
-{% load widget_tweaks %}
+
 
 <header class="main-header">
     <!-- logo   -->
-    {%for item in page.galleria_3.all %}
+    {%for item in page.galleria_4.all %}
      {% image item.logo width-110 format-jpeg as logo %}
     <a href="{% slugurl 'home' %}" class="logo-holder"><img src="{{logo.url}}" alt=""></a>  
     {% endfor %}
     <!-- logo end  -->		
     <!-- search -->				
+    
     <!-- search end  -->
-    <div class="sb-button"></div>
     <div class="share-btn showshare"><i class="fal fa-megaphone"></i><span>Share</span></div>
     <!-- mobile nav -->
     <div class="nav-button-wrap">
@@ -44,7 +44,8 @@
                 </li>
                 <li>
                     <a href="{% slugurl 'shootingnow' %}">Shooting now</a>
-                </li>               
+                </li>
+               
             </ul>
         </nav>
     </div>
@@ -56,55 +57,12 @@
     <div class="sb-widget-wrap fl-wrap">
         <h3>LEAVE YOUR COMMENTS </h3>
         <div class="sb-widget  fl-wrap">
-            <p> Let me know, what you think about my work. I will contact to you soon.  </p>
             <div class="column-wrapper_item fl-wrap">
                 <div class="column-wrapper_text fl-wrap">
                     <div id="contact-form" class="fl-wrap">
                         <div id="message"></div>
-                        <form action="{% pageurl page %}" method="POST" novalidate class="custom-form" action="php/contact.php" name="contactform" >
-                            <fieldset>
-                              
-                                    {% csrf_token %}
-                                    {% for hidden_field in form.hidden_fields %}
-                                      {{ hidden_field }}
-                                    {% endfor %}
-                                  
-                                    {% if form.non_field_errors %}
-                                      <div class="alert alert-danger" role="alert">
-                                        {% for error in form.non_field_errors %}
-                                          {{ error }}
-                                        {% endfor %}
-                                      </div>
-                                    {% endif %}
-                                  
-                                    {% for field in form.visible_fields %}
-                                      <div class="form-group">
-                                        {{ field.label_tag }}
-                                  
-                                        {% if form.is_bound %}
-                                          {% if field.errors %}
-                                            {% render_field field class="form-control is-invalid" %}
-                                            {% for error in field.errors %}
-                                              <div class="invalid-feedback">
-                                                {{ error }}
-                                              </div>
-                                            {% endfor %}
-                                          {% else %}
-                                            {% render_field field class="form-control is-valid" %}
-                                          {% endif %}
-                                        {% else %}
-                                          {% render_field field class="form-control" %}
-                                        {% endif %}
-                                  
-                                        {% if field.help_text %}
-                                          <small class="form-text text-muted" placeholder="Your Email">{{ field.help_text }}</small>
-                                        {% endif %}
-                                      </div>
-                                      
-                                    {% endfor %}  
-                            </fieldset>
-                            <button type="submit" id="subscribe-button" class="subscribe-button">Submit</button>
-                        </form>
+                       <h1>{{ self.thank_you_text|richtext }}</h1> 
+                       <a href="{% slugurl 'landscape' %}"><button type="submit" id="subscribe-button" class="subscribe-button">New Comment</button></a>
                     </div>
                 </div>
             </div>
@@ -133,9 +91,6 @@
             </div>
         </div>
     </div>
-
-  
-
     <!-- sb-widget-wrap end-->                                   
     <!-- sb-widget-wrap-->
     <div class="sb-widget-wrap fl-wrap">
