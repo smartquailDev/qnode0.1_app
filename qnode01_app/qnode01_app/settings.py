@@ -183,9 +183,9 @@ WAGTAILIMAGES_MAX_IMAGE_PIXELS = 500000000  # i.e. 500 megapixels
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     #'account.authentication.EmailAuthBackend',
-    #'social_core.backends.facebook.FacebookOAuth2',
-    #'social_core.backends.twitter.TwitterOAuth',
-    #'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
 ]
 
 # social auth settings
@@ -212,6 +212,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'wagtail.contrib.settings.context_processors.settings',
             ],
         },
     },
