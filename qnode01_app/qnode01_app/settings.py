@@ -99,7 +99,8 @@ WAGTAILSEARCH_BACKENDS = {
 }
 
 #WagtailAnalitycs
-GA_KEY_CONTENT = os.environ.get('GA_KEY_CONTENT_ENV')
+
+GA_KEY_FILEPATHT = os.environ.get('GA_KEY_FILEPATH_KEY')
 GA_VIEW_ID = os.environ.get('GA_VIEW_ID_ENV')
 
 
