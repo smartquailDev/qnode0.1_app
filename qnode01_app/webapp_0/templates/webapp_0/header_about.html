@@ -6,7 +6,7 @@
 <header class="main-header">
     <!-- logo   -->
     {%for item in page.galleria_7.all %}
-     {% image item.logo width-110 format-jpeg as logo %}
+     {% image item.logo width-110 format-png as logo %}
     <a href="{% slugurl 'home' %}" class="logo-holder"><img src="{{logo.url}}" alt=""></a>  
     {% endfor %}
     <!-- logo end  -->		
