@@ -39,20 +39,20 @@ RUN python -m venv /py && \
     apk add libressl-dev  && \
     apk del .tmp-deps && \
     adduser --disabled-password --no-create-home qnode01 && \
-    mkdir -p /qnode0.1_app/qnode01_app/static && \
+    mkdir -p mnt/qnode01_data/qnode0.1_app/qnode01_app/static && \
    # mkdir -p /qnode0.0_app/qnode0_app/static/media && \
-    chmod -R 755 /qnode0.1_app/qnode01_app/static  && \
+    chmod -R 755 mnt/qnode01_data/qnode0.1_app/qnode01_app/static  && \
 
-    mkdir -p /qnode0.1_app/qnode01_app/media && \
-    chmod -R 755 /qnode0.1_app/qnode01_app/media  && \
-    chown -R qnode01:qnode01 /qnode0.1_app/qnode01_app/media && \
+    mkdir -p mnt/qnode01_data/qnode0.1_app/qnode01_app/media && \
+    chmod -R 755 mnt/qnode01_data/qnode0.1_app/qnode01_app/media  && \
+    chown -R qnode01:qnode01 mnt/qnode01_data/qnode0.1_app/qnode01_app/media && \
     
-    mkdir -p /qnode0.1_app/qnode01_app/staticfiles && \
-    chmod -R 755 /qnode0.1_app/qnode01_app/staticfiles  && \
-    chown -R qnode01:qnode01 /qnode0.1_app/qnode01_app/staticfiles && \
+    mkdir -p mnt/qnode01_data/qnode0.1_app/qnode01_app/staticfiles && \
+    chmod -R 755 mnt/qnode01_data/qnode0.1_app/qnode01_app/staticfiles  && \
+    chown -R qnode01:qnode01 mnt/qnode01_data/qnode0.1_app/qnode01_app/staticfiles && \
 
     #chmod -R 755 /qnode0.0_app/qnode0_app/static/media  && \
-    chown -R qnode01:qnode01 /qnode0.1_app/qnode01_app/static && \
+    chown -R qnode01:qnode01 mnt/qnode01_data/qnode0.1_app/qnode01_app/static && \
     #chown -R qnode0:qnode0 /qnode0.0_app/qnode0_app/static/media && \
 
     mkdir -p /qnode0.1_app/qnode01_app/run/ && \
