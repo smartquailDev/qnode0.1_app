@@ -48,11 +48,11 @@ RUN python -m venv /py && \
     chown -R qnode01:qnode01 /qnode0.1_app/qnode01_app/media && \
     
     mkdir -p /qnode0.1_app/qnode01_app/staticfiles && \
-    chmod -R /qnode0.1_app/qnode01_app/staticfiles  && \
+    chmod -R 755 /qnode0.1_app/qnode01_app/staticfiles  && \
     chown -R qnode01:qnode01 /qnode0.1_app/qnode01_app/staticfiles && \
 
     #chmod -R 755 /qnode0.0_app/qnode0_app/static/media  && \
-    chown -R qnode01:qnode01 qnode0.1_app/qnode01_app/static && \
+    chown -R qnode01:qnode01 /qnode0.1_app/qnode01_app/static && \
     #chown -R qnode0:qnode0 /qnode0.0_app/qnode0_app/static/media && \
 
     mkdir -p /qnode0.1_app/qnode01_app/run/ && \
