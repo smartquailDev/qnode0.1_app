@@ -1,4 +1,10 @@
 {% extends "wagtailadmin/login.html" %}
 {% load static %}
 
-{% block branding_login %}<img src="{% static 'img/SBM-Blogo.png'%}" /> {% endblock %}
+{% block branding_login %}
+<img src="{% static 'img/SBM-Blogo.png'%}" /> 
+{% endblock %}
+
+{% block branding_logo %}
+    <img src="{% static 'img/logo.png'%}" alt="Custom Project" width="80" />
+{% endblock %}
