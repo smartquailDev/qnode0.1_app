@@ -7,243 +7,76 @@
 
 {% block content %}
 {% include 'webapp_0/header_shootingnow.html' %}
-            <!-- header end -->
-            <!-- wrapper  -->	
-            <div id="wrapper">
-                <!-- content -->	
-                <div class="content">
-                    <!-- column-image  -->	
-                    <div class="column-image">
-                        <div class="bg"  data-bg="{% static 'images/bg/1.jpg' %}"></div>
-                        <div class="overlay"></div>
-                        <div class="column-title">
-                            <h2>Shootin Now</h2>
-                        </div>
-                        <div class="column-notifer">
-                            <div class="scroll-down-wrap transparent_sdw">
-                                <div class="mousey">
-                                    <div class="scroller"></div>
-                                </div>
-                                <span>Scroll down  to Discover</span>
-                            </div>
-                        </div>
-                        <div class="fixed-column-dec"></div>
-                    </div>
-                    <!-- column-image end  -->	
-                    <!-- column-wrapper -->	
-                    <div class="column-wrapper single-content-section">
-                        <!--fixed-bottom-content -->	
-                        <div class="fixed-bottom-content">
-                            <!-- pagination   -->
-                            <div class="content-nav-fixed">
-                                <ul>
-                                    <li>
-                                        <a href="blog-single.html" class="ln"><i class="fal fa-long-arrow-left"></i><span>Prev <strong></strong></span></a>
-                                        <div class="content-nav_mediatooltip cnmd_leftside"><img  src="images/folio/1.jpg"   alt=""></div>
-                                    </li>
-                                    <li>
-                                        <a href="blog-single.html" class="rn"><span >Next <strong></strong></span> <i class="fal fa-long-arrow-right"></i></a>
-                                        <div class="content-nav_mediatooltip cnmd_rightside"><img  src="images/folio/1.jpg"   alt=""></div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--fixed-bottom-content end  -->	
-                        <!--section  -->	
-                         <section class="single-content-section">
-                            <div class="container small-container">
-                                <!-- post -->
-                                {% for post in posts %}	
-                                <div class="post fl-wrap fw-post single-post ">
-                                    <h2><span>{{ post.custom_title }}</span></h2>
-                                    <ul class="blog-title-opt">
-                                        <li>{{ post.Fecha|date:"d M,Y" }}</li>
-                                        <li> - </li>
-                                        <li><a href="{% slugurl 'about' %}">{{post.author}}</a></li>
-                                        <li>{{post.agency}}</li>
-                                        <li> - </li>
-                                        <li><a href="#"><span class="author_avatar"> <img alt='' src="{% static 'images/avatar/1.jpg' %}" width="50" height="50"></span>Juan Silva</a></li>
-                                    </ul>
-                                    <!-- blog media -->
-                                    <div class="blog-media fl-wrap">
-                                        <div class="single-slider-wrap">
-                                            <div class="single-slider fl-wrap">
-                                                <div class="swiper-container">
-                                                    <div class="swiper-wrapper lightgallery">
-                                                        {% image post.image fill-250x250 as new_image2 %}
-                                                        <div class="swiper-slide hov_zoom"><img src="{{new_image2.url}}" alt=""><a href="{{new_image2.url}}" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
-                                                        {% image post.image_2 fill-250x250 as new_image3 %}
-                                                        <div class="swiper-slide hov_zoom"><img src="{{new_image3.url}}" alt=""><a href="{{new_image3.url}}" class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
-                                                        {% image post.image_3 fill-250x250 as new_image4 %}
-                                                        <div class="swiper-slide hov_zoom"><img src="{{new_image4.url}}" alt=""><a href="{{new_image4.url}}"class="box-media-zoom   popup-image"><i class="fal fa-search"></i></a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="ss-slider-pagination_wrap">
-                                                <div class="ss-slider-pagination"></div>
-                                            </div>
-                                            <div class="ss-slider-cont ss-slider-cont-prev color-bg"><i class="fal fa-long-arrow-left"></i></div>
-                                            <div class="ss-slider-cont ss-slider-cont-next color-bg"><i class="fal fa-long-arrow-right"></i></div>
-                                        </div>
-                                    </div>
-                                    <!-- blog media end -->
-                                    <div class="blog-text fl-wrap">
-                                        <div class="pr-tags fl-wrap">
-                                            <span>Tags : </span>
-                                            <ul>
-                                                {% if post.tag == advertising %}
-                                                <li><a href="{% slugurl 'advertising' %}">Advertinsing</a></li>
-                                                {% else %}
-                                                <li></li>
-                                                {% endif %}
-                                                {% if post.tag == documentary %}
-                                                <li><a href="{% slugurl 'documentary' %}">Documentary</a></li>
-                                                {% else %}
-                                                <li></li>
-                                                {% endif %}
-                                                {% if post.tag == landscape %}
-                                                <li><a href="{% slugurl 'landscape' %}">Landscape</a></li>
-                                                {% else %}
-                                                <li></li>
-                                                {% endif %}
-                                                {% if post.tag == product %}
-                                                <li><a href="{% slugurl 'product' %}">Product</a></li>
-                                                {% else %}
-                                                <li></li>
-                                                {% endif %}
-                                                {% if post.tag == tearsheeting %}
-                                                <li><a href="{% slugurl 'tearsheeting' %}">Teearsheeting</a></li>
-                                                {% else %}
-                                                <li></li>
-                                                {% endif %}
-                                            </ul>
-                                        </div>
-                                        {{ post.content }}
-                                        <blockquote>
-                                            <p>  {{ post.quote }}   </p>
-                                        </blockquote>
-                                       
-                                    </div>
-                                    <!-- post-author-->                                   
-                                    <div class="post-author fl-wrap">
-                                        <div class="author-img">
-                                            <img alt='' src="{% static 'images/avatar/1.jpg' %}">	
-                                        </div>
-                                        <div class="author-content">
-                                            <h5><a href="{% slugurl 'about' %}">Juan Silva Photo</a></h5>
-                                            <p>{{post.comments}}</p>
-                                            <div class="author-social">
-                                                <ul>
-                                                    {% if settings.webapp_0.SocialMediaSettings.facebook %}
-                                                    <li><a href="{{ settings.webapp_0.SocialMediaSettings.facebook }}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                                    {% endif %}
-                                                    {% if settings.webapp_0.SocialMediaSettings.instagram %}
-                                                    <li><a href="{{ settings.webapp_0.SocialMediaSettings.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                                    {% endif %}
-                                                    {% if settings.webapp_0.SocialMediaSettings.twitter %}
-                                                    <li><a href="{{ settings.webapp_0.SocialMediaSettings.twitter }}" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                                    {% endif %}
-                                                    <li><a href="https://api.whatsapp.com/send?phone=593984534954" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-                                                    <li><a href="mailto:info@juansilvaphoto.com" target="_blank"><i class="fab fa-envelope"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--post-author end-->
-                                    <div id="comments" class="single-post-comm fl-wrap">
-                                        <!--title-->
-                                        <h6 id="comments-title">Comments<span>( 2 )</span></h6>
-                                        <ul class="commentlist clearafix">
-                                            <li class="comment">
-                                                <div class="comment-body">
-                                                    <div class="comment-author">
-                                                        <img alt='' src="{% static 'images/avatar/1.jpg' %}" width="50" height="50">
-                                                    </div>
-                                                    <table>
-                                                        {% for question, answers in results.items %}
-                                                        <tr>
-                                                          <th>{{  question  }}</th>
-                                                          
-                                                        </tr>
-                                                        <tr>
-                                                            {% for answer, count in answers.items %}
-                                                          <td>{{ answer }}: {{ count }}  <i class="fa-solid fa-thumbs-up"></i></td>			
-                                                          {% endfor %}
-                                                        </tr>
-                                                        {% endfor %}
-                                                      </table>
-                                                    <cite class="fn"><a href="#">Kevin</a></cite>
-                                                    <div class="comment-meta">
-                                                        <h6><a href="#">January 02, 2014 at 07:39 am</a> / <a class='comment-reply-link' href="#">Reply</a></h6>
-                                                    </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo.</p>
-                                                </div>
-                                            </li>
-                                           
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                        <div id="respond" class="clearafix">
-                                            <h6 id="reply-title">Leave A Review</h6>
 
-                                            <form action="{% pageurl page %}" method="POST" novalidate class="custom-form "   name="commentform">
-                                                <fieldset>
-                                                {% csrf_token %}
-                                                {% for hidden_field in form.hidden_fields %}
-                                                  {{ hidden_field }}
-                                                {% endfor %}
-                                              
-                                                {% if form.non_field_errors %}
-                                                  <div class="alert alert-danger" role="alert">
-                                                    {% for error in form.non_field_errors %}
-                                                      {{ error }}
-                                                    {% endfor %}
-                                                  </div>
-                                                {% endif %}
-                                              
-                                                {% for field in form.visible_fields %}
-                                                  <div class="form-group">
-                                                    {{ field.label_tag }}
-                                              
-                                                    {% if form.is_bound %}
-                                                      {% if field.errors %}
-                                                        {% render_field field class="form-control is-invalid" %}
-                                                        {% for error in field.errors %}
-                                                          <div class="invalid-feedback">
-                                                            {{ error }}
-                                                          </div>
-                                                        {% endfor %}
-                                                      {% else %}
-                                                        {% render_field field class="form-control is-valid" %}
-                                                      {% endif %}
-                                                    {% else %}
-                                                      {% render_field field class="form-control" %}
-                                                    {% endif %}
-                                              
-                                                    {% if field.help_text %}
-                                                      <small class="form-text text-muted">{{ field.help_text }}</small>
-                                                    {% endif %}
-                                                  </div>
-                                                {% endfor %}          
-                                                <button class="btn float-btn" id="submit">Add Comment </button>
-                                            </fieldset>
-                                              </form>
-                                        </div>
-                                        <!--end respond-->
-                                    </div>
-                                    <!--comments end -->
-                                </div>
-                                <!-- post end-->
-                                {% endfor %}
-                            </div>
-                        </section>
-                        <!--section end  -->	
-                        <!--footer -->			
-                        {% include 'webapp_0/footer.html' %}
-                        <!--footer end  -->	
-                    </div>
-                    <!-- column-wrapper -->	
+<div id="wrapper">
+    <!--content -->	
+    <div class="content full-height">
+        <!--home-main_container-->	
+        <div class="home-main_container">
+            <!--follow-wrap-->
+            <div class="follow-wrap">
+                <div class="follow-wrap_title">
+                    <span>Follow</span> <i class="fal fa-arrow-right"></i>
                 </div>
-                <!--content end-->	
-                <!--share-wrapper-->
+                <div class="clearfix"></div>
+                <ul>
+                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
+                </ul>
+            </div>
+            <!--follow-wrap end-->
+            <!--hero-decor-let-->   
+            <div class="hero-decor-let">
+                <div>01. <span>Wedding</span></div>
+                <div>02. <span>Commercial</span></div>
+                <div>03. <span>Branding</span></div>
+            </div>
+            <!--hero-decor-let end-->
+            <!--home-main_title-->
+            <div class="home-main_title">
+                <div class="home-main_title_item">
+                    <h4>Photographer and director based in New York</h4>
+                    <h2>Jane Kowalski</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                    <a href="portfolio.html" class="btn fl-btn">My portfolio</a>
+                </div>
+            </div>
+            <!--home-main_title end-->
+            <!--bg video-->
+            <div class="media-container media-container_fs">
+                <div class="video-mask"></div>
+                <div class="video-holder">
+                    <div class="video-container">
+                        <video autoplay  loop muted  class="bgvid">
+                            <source src="http://springbook.kwst.net/video/1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <!--  
+                        Vimeo code
+                        
+                         <div  class="background-vimeo" data-vim="97871257"> </div> --> 
+                    <!--  
+                        Youtube code 
+                        
+                         <div  class="background-youtube-bg" data-vid="Hg5iNVSp2z8" data-mv="1"> </div> -->
+                    <div class="mob-bg bg" data-bg="images/bg/1.jpg"></div>
+                </div>
+            </div>
+
+            <div class="overlay"></div>
+            <!--bg image end-->
+        </div>
+        <!--home-main_container end-->	
+    </div>
+    <!--content end-->	
+    <!--share-wrapper-->
+    <div class="share-wrapper">
+        <div class="share-container fl-wrap  isShare"></div>
+    </div>
+    <!--share-wrapper end-->
+</div>
+          
                 {% endblock %}
                
