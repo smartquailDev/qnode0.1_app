@@ -666,7 +666,9 @@ class SocialMediaSettings(BaseSetting):
             FieldPanel("facebook"),
             FieldPanel("twitter"),
             FieldPanel("instagram"),
-            FieldPanel("youtube"),           
+            FieldPanel("youtube"),  
+            FieldPanel("behance"),
+            FieldPanel("linkedin"),         
             ]
         ,heading= "Social Media Settings")
     ]
