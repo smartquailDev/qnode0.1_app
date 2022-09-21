@@ -657,6 +657,8 @@ class SocialMediaSettings(BaseSetting):
     twitter = models.URLField(blank=True,null=True,help_text="")
     instagram = models.URLField(blank=True,null=True,help_text="")
     youtube = models.URLField(blank=True,null=True,help_text="")
+    behance = models.URLField(blank=True,null=True,help_text="")
+    linkedin = models.URLField(blank=True,null=True,help_text="")
 
     panels = [
         MultiFieldPanel(
