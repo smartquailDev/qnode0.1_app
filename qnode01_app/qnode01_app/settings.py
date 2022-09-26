@@ -175,10 +175,21 @@ BATON = {
 
 #WEBAPP SETTINGS
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 WAGTAILIMAGES_MAX_UPLOAD_SIZE = 50 * 1024 * 1024  # i.e. 20MB
 WAGTAILIMAGES_MAX_IMAGE_PIXELS = 500000000  # i.e. 500 megapixels
 #WAGTAILIMAGES_FEATURE_DETECTION_ENABLED = True
+
+
+#Email setups
+EMAIL_HOST          = os.environ.get('EMAIL_HOST')
+EMAIL_PORT          =  os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER     = os.environ.get('EMAIL_HOST_USER ')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL  = EMAIL_HOST_USER
+EMAIL_BACKEND       = os.environ.get('EMAIL_BACKEND')
+EMAIL_USE_TLS       = True
+EMAIL_USE_SSL       = False
 
 
 AUTHENTICATION_BACKENDS = [
