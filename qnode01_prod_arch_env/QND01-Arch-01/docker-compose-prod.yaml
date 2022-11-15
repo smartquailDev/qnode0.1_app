@@ -7,7 +7,7 @@ services:
       - PORT=9000
     restart: always
     env_file:
-      - .env
+      - .env_prod
     depends_on:
       - smartquaildb
     #  - redis
@@ -27,6 +27,7 @@ services:
     volumes:
       - static-data-qnode01:/qnode0.1_app/qnode01_app/staticfiles/
       - static-data-qnode01:/qnode0.1_app/qnode01_app/media/
+      - static-data-qnode01:/vol/web
    # command: sh -c "chmod +x /scripts/migrations.sh && sh /scripts/migrations.sh && sh /scripts/run.sh"
     networks: 
       - lansmartquail
@@ -34,7 +35,7 @@ services:
   smartquaildb:
     image: postgres:13-alpine
     env_file:
-      - .env
+      - .env_prod
     restart: always
     command: -p 5432
     ports:
@@ -42,12 +43,12 @@ services:
     expose:
      - 5432
     volumes:
-      - smartquaildb_data-qnode01:/var/lib/postgresql/data/
+      - smartquaildb_data:/var/lib/postgresql/data/
     networks: 
       - lansmartquail
 
   qnode01_proxy:
-    image: smartquail/qnode01_nginx:dev
+    image: smartquail/qnode01_nginx:prod
     restart: always
     depends_on:
       - qnode01_app
@@ -56,7 +57,7 @@ services:
       - 443:443
 
     env_file:
-      - .env
+      - .env_prod
     networks: 
       - lansmartquail
 
@@ -69,7 +70,7 @@ services:
     ports:
       - "6379:6379"
     env_file:
-      - .env
+      - .env_prod
     volumes:
       - redis_data-qnode01:/data
     entrypoint: redis-server --appendonly yes --port 6379
@@ -84,7 +85,7 @@ services:
       - "5672:5672"
       - "15672:15672"
     env_file:
-      - .env
+      - .env_prod
     volumes:
       - rabbitmq-data-qnode01:/var/lib/rabbitmq
       - rabbitmq-data-qnode01:/var/log/rabbitmq
@@ -96,7 +97,7 @@ services:
 
 volumes:
   static-data-qnode01:
-  smartquaildb_data-qnode01:
+  smartquaildb_data:
   rabbitmq-data-qnode01:
   redis_data-qnode01:
 
