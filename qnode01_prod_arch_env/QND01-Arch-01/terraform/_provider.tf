@@ -1,6 +1,6 @@
 variable "digitalocean_token" {
-  description = "Digital Ocean Token:juansilvaphoto"
-  default     = "dop_v1_4d56140b201077922088cb2a49b03ced13a9f8b695b25ed315056b1fc2ba6db8"
+  description = "Digital Ocean Token:qnd01"
+  default     = "dop_v1_a343ce0ca32562759328e9fab532aec3704912085a6ba3f65f4a4ce2d2bab719"
 }
 
 variable "spaces_access_id" {
