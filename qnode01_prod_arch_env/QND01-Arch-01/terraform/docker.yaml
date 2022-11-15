@@ -53,7 +53,7 @@ runcmd:
   - git config --global user.email "smartquail.dev@gmail.com"
   - git clone https://github.com/smartquailDev/qnode0.1_app.git
   - cd  /kube/qnode0.1_app/qnode01_prod_arch_env/QND01-Arch-01/
-  - sudo docker compose -f docker-compose-prod.yaml up --build
+  #- sudo docker compose -f docker-compose-prod.yaml up --build
   #- k3s kubectl -n qnode41 create secret generic qnode01-secret --from-env-file=.env
   #Instalamos Ingress
   #- cd  /kube/qnode4.1_app/qnode01_prod_arch_env/qnode01_ingress-nginx/templates/

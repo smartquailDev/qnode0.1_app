@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.9"
 
 services:
   qnode01_app:
@@ -27,7 +27,6 @@ services:
     volumes:
       - static-data-qnode01:/qnode0.1_app/qnode01_app/staticfiles/
       - static-data-qnode01:/qnode0.1_app/qnode01_app/media/
-      - static-data-qnode01:/vol/web
    # command: sh -c "chmod +x /scripts/migrations.sh && sh /scripts/migrations.sh && sh /scripts/run.sh"
     networks: 
       - lansmartquail
@@ -43,19 +42,23 @@ services:
     expose:
      - 5432
     volumes:
-      - smartquaildb_data:/var/lib/postgresql/data/
+      - smartquaildb_data-qnode01:/var/lib/postgresql/data/
     networks: 
       - lansmartquail
 
-  qnode01_proxy:
-    image: smartquail/qnode01_nginx:prod
+  proxy:
+    image: smartquail/qnode01_nginx:dev
     restart: always
     depends_on:
       - qnode01_app
     ports:
       - 80:80
       - 443:443
-
+     
+    volumes:
+      - certbot-web_2:/vol/www
+      - proxy-dhparams_2:/vol/proxy
+      - certbot-certs_2:/etc/letsencrypt
     env_file:
       - .env_prod
     networks: 
@@ -70,7 +73,7 @@ services:
     ports:
       - "6379:6379"
     env_file:
-      - .env_prod
+      - .env
     volumes:
       - redis_data-qnode01:/data
     entrypoint: redis-server --appendonly yes --port 6379
@@ -85,7 +88,7 @@ services:
       - "5672:5672"
       - "15672:15672"
     env_file:
-      - .env_prod
+      - .env
     volumes:
       - rabbitmq-data-qnode01:/var/lib/rabbitmq
       - rabbitmq-data-qnode01:/var/log/rabbitmq
@@ -96,8 +99,11 @@ services:
         - lansmartquail
 
 volumes:
+  certbot-web_2:
+  proxy-dhparams_2:
+  certbot-certs_2:
   static-data-qnode01:
-  smartquaildb_data:
+  smartquaildb_data-qnode01:
   rabbitmq-data-qnode01:
   redis_data-qnode01:
 
