@@ -73,7 +73,7 @@ services:
     ports:
       - "6379:6379"
     env_file:
-      - .env
+      - .env_prod
     volumes:
       - redis_data-qnode01:/data
     entrypoint: redis-server --appendonly yes --port 6379
@@ -88,7 +88,7 @@ services:
       - "5672:5672"
       - "15672:15672"
     env_file:
-      - .env
+      - .env_prod
     volumes:
       - rabbitmq-data-qnode01:/var/lib/rabbitmq
       - rabbitmq-data-qnode01:/var/log/rabbitmq
