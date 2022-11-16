@@ -47,7 +47,7 @@ services:
       - lansmartquail
 
   proxy:
-    image: smartquail/qnode01_nginx:dev
+    image: smartquail/qnode01_nginx:prod
     restart: always
     depends_on:
       - qnode01_app
