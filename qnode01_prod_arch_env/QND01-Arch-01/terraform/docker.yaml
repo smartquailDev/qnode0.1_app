@@ -29,6 +29,12 @@ runcmd:
   # install docker-compose following the guide: https://docs.docker.com/compose/install/
   - sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   - sudo chmod +x /usr/local/bin/docker-compose
+  #install Arch-0
+  - sudo add-apt-repository ppa:certbot/certbot
+  - sudo apt-get -y update
+  - sudo apt install letsencrypt
+  - sudo mkdir -p /var/www/letsencrypt
+  - sudo letsencrypt certonly -a webroot --webroot-path=/var/www/letsencrypt -m smartquail.dev@gmail.com --agree-tos -d ssl.juansilvaphoto.com
   # Install kubectl
   - sudo snap install kubectl --classic
   - sudo apt install virtualbox virtualbox-ext-pack
