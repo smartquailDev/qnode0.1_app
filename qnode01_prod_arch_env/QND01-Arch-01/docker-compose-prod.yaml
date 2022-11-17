@@ -48,6 +48,8 @@ services:
 
   proxy:
     image: smartquail/qnode01_nginx:prod
+    env_file:
+      - ./config.env
     restart: always
     depends_on:
       - qnode01_app
