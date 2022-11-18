@@ -1,6 +1,6 @@
 server {
     listen                     ${LISTEN_PORT};
-    server_name                127.0.0.1 134.209.32.52; 
+    server_name                127.0.0.1 64.225.90.233; 
     
 location /static {
     alias /qnode0.1_app/qnode01_app/staticfiles;
