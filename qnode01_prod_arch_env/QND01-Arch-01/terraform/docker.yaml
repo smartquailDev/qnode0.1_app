@@ -34,31 +34,33 @@ runcmd:
   - sudo apt-get -y update
   - sudo apt install letsencrypt
   - sudo mkdir -p /var/www/letsencrypt
-  - sudo letsencrypt certonly -a webroot --webroot-path=/var/www/letsencrypt -m smartquail.dev@gmail.com --agree-tos -d ssl.juansilvaphoto.com
+  #- sudo letsencrypt certonly -a webroot --webroot-path=/var/www/letsencrypt -m smartquail.dev@gmail.com --agree-tos -d ssl.juansilvaphoto.com
   # Install kubectl
-  - sudo snap install kubectl --classic
-  - sudo apt install virtualbox virtualbox-ext-pack
+  #- sudo snap install kubectl --classic
+  #- sudo apt install virtualbox virtualbox-ext-pack
   # Install Minikube
  # - wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
  # - sudo wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
  # - chmod +x minikube-linux-amd64
  # - sudo mv minikube-linux-amd64 /usr/local/bin/minikube
  #Instalamos el cluster k3s del nodo qnode0
-  - sudo curl -sfL https://get.k3s.io | sh - 
+  #- sudo curl -sfL https://get.k3s.io | sh - 
   # Instalamos el load-balancer NGINX en el cluster
  # - k3s kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.26.1/deploy/static/mandatory.yaml 
  # - k3s kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/nginx-0.26.1/deploy/static/provider/cloud-generic.yaml
-  - k3s kubectl create namespace ingress-nginx
-  - k3s kubectl create namespace qnode41
-  - k3s kubectl create namespace postgres
-  - k3s kubectl create namespace cert-manager
-  - k3s kubectl create namespace argocd
+  #- k3s kubectl create namespace ingress-nginx
+  #- k3s kubectl create namespace qnode41
+  #- k3s kubectl create namespace postgres
+  #- k3s kubectl create namespace cert-manager
+  #- k3s kubectl create namespace argocd
   - mkdir -p  kube
   - cd kube/ 
   - git config --global user.name "smartquailDev"
   - git config --global user.email "smartquail.dev@gmail.com"
+  #instalamos certbot
+  - sudo apt install certbot python3-certbot-apache
   - git clone https://github.com/smartquailDev/qnode0.1_app.git
-  - cd  /kube/qnode0.1_app/qnode01_prod_arch_env/QND01-Arch-01/
+  #- cd  /kube/qnode0.1_app/qnode01_prod_arch_env/QND01-Arch-01/
   #- sudo docker compose -f docker-compose-prod.yaml up --build
   #- k3s kubectl -n qnode41 create secret generic qnode01-secret --from-env-file=.env
   #Instalamos Ingress
